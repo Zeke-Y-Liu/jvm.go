@@ -1,11 +1,11 @@
-package classpath 
+package classpath
 
 import "os"
 import "path/filepath"
 import "strings"
 
 func newWildcardEntry(path string) CompositeEntry {
-	baseDir := path[:len(path) -1] // remove *
+	baseDir := path[:len(path)-1] // remove *
 	compositeEntry := []Entry{}
 
 	walkFn := func(path string, info os.FileInfo, err error) error {
@@ -25,6 +25,6 @@ func newWildcardEntry(path string) CompositeEntry {
 		return nil
 	}
 
-	filepath.Walk(baseDir,walkFn)
+	filepath.Walk(baseDir, walkFn)
 	return compositeEntry
 }

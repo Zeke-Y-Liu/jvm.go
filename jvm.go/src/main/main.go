@@ -1,4 +1,4 @@
-package main 
+package main
 
 import "fmt"
 import "strings"
@@ -16,4 +16,3 @@ func main() {
 		startJVM(cmd)
 	}
 }
-

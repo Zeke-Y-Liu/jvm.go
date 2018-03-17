@@ -5,7 +5,7 @@ import "path/filepath"
 
 type Classpath struct {
 	bootClasspath Entry
-	extClasspath Entry
+	extClasspath  Entry
 	userClasspath Entry
 }
 
@@ -37,7 +37,7 @@ func getJreDir(jreOption string) string {
 		return "./jre"
 	}
 
-	if jh := os.Getenv("JAVA_HOME"); jh !="" {
+	if jh := os.Getenv("JAVA_HOME"); jh != "" {
 		return filepath.Join(jh, "jre")
 	}
 
@@ -49,13 +49,12 @@ func exists(path string) bool {
 		if os.IsNotExist(err) {
 			return false
 		}
- 	}
+	}
 
- 	return true
+	return true
 }
 
-
-func (self *Classpath) parseUserClasspath (cpOption string) {
+func (self *Classpath) parseUserClasspath(cpOption string) {
 	if cpOption == "" {
 		cpOption = "."
 	}
@@ -65,22 +64,17 @@ func (self *Classpath) parseUserClasspath (cpOption string) {
 
 func (self *Classpath) ReadClass(className string) ([]byte, Entry, error) {
 	className = className + ".class"
-	if data, entry,err := self.bootClasspath.readClass(className); err == nil {
-		return data, entry , err
+	if data, entry, err := self.bootClasspath.readClass(className); err == nil {
+		return data, entry, err
 	}
 
 	if data, entry, err := self.extClasspath.readClass(className); err == nil {
-		return data, entry , err
+		return data, entry, err
 	}
 
 	return self.userClasspath.readClass(className)
 }
 
-
 func (self *Classpath) String() string {
 	return self.userClasspath.String()
-} 
-
-
-
-
+}

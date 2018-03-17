@@ -5,19 +5,19 @@ import "fmt"
 import "os"
 
 type Cmd struct {
-	helpFlag bool
+	helpFlag    bool
 	versionFlag bool
-	cpOption string
-	xjreOption string
-	class string
-	args []string
+	cpOption    string
+	xjreOption  string
+	class       string
+	args        []string
 }
 
 func parseCmd() *Cmd {
 
 	cmd := &Cmd{}
 
-	flag.Usage = printUsage 
+	flag.Usage = printUsage
 	flag.BoolVar(&cmd.helpFlag, "help", false, "print help message")
 	flag.BoolVar(&cmd.helpFlag, "? ", false, "print help message")
 	flag.BoolVar(&cmd.versionFlag, "version", false, "print verion and exit")
@@ -33,9 +33,9 @@ func parseCmd() *Cmd {
 		cmd.class = args[0]
 		cmd.args = args[1:]
 	}
-	
+
 	return cmd
-		
+
 }
 
 func printUsage() {
@@ -56,10 +56,3 @@ func startJVM(cmd *Cmd) {
 
 	fmt.Printf("class data :%v\n", classData)
 }
-
-
-
-
-
-
-

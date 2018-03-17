@@ -23,9 +23,8 @@ func (self CompositeEntry) readClass(className string) ([]byte, Entry, error) {
 			return data, from, nil
 		}
 	}
-	return nil,nil, errors.New("class not found: " + className)
+	return nil, nil, errors.New("class not found: " + className)
 }
-
 
 func (self CompositeEntry) String() string {
 	strs := make([]string, len(self))

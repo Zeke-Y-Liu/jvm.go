@@ -1,6 +1,5 @@
 package classpath
 
-
 import "archive/zip"
 import "errors"
 import "io/ioutil"
@@ -17,7 +16,7 @@ func newZipEntry(path string) *ZipEntry {
 	}
 
 	return &ZipEntry{absPath}
-	
+
 }
 
 func (self *ZipEntry) readClass(className string) ([]byte, Entry, error) {
@@ -46,11 +45,9 @@ func (self *ZipEntry) readClass(className string) ([]byte, Entry, error) {
 
 	}
 
-
 	return nil, nil, errors.New("class not found: " + className)
 }
 
 func (self *ZipEntry) String() string {
 	return self.absPath
 }
-
