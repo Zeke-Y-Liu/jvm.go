@@ -1,6 +1,8 @@
 package main 
 
 import "fmt"
+import "strings"
+import "../classpath"
 
 func main() {
 
