@@ -3,6 +3,9 @@ package main
 import "flag"
 import "fmt"
 import "os"
+import "strings"
+import "../classpath"
+
 
 type Cmd struct {
 	helpFlag    bool
@@ -43,8 +46,7 @@ func printUsage() {
 }
 
 func startJVM(cmd *Cmd) {
-	cp := classpath.Parse(cmd.Xjreoption, cmd, cpOption)
-	fme.Printf()
+	cp := classpath.Parse(cmd.xjreOption, cmd.cpOption)
 	fmt.Printf("classpath:%s class:%s args:%v\n", cp, cmd.class, cmd.args)
 	className := strings.Replace(cmd.class, ".", "/", -1)
 	classData, _, err := cp.ReadClass(className)
