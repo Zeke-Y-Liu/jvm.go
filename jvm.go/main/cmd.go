@@ -4,7 +4,7 @@ import "flag"
 import "fmt"
 import "os"
 import "strings"
-import "../classpath"
+import "jvm.go/classpath"
 
 
 type Cmd struct {
